@@ -3,19 +3,35 @@
         <h1 style = 'color: green'>
         Estamos viendo mi primera plantilla
         </h1>
-    </body>
+
+        {# No temas diseñador ignora esta parte #}
+        {% comment %}
+        hola dame bola
+        {% endcomment %}
+        
+        {% if nombre_persona == 'Camilo' %}
+
+        <p><strong>El estudiante es Camilo</strong></p>
+
+        {% else %}
+
+        <p><strong>El estudiante es Juan</strong></p>
+        
+        {% endif %}
+
     <p>El nombre del creador es: {{nombre_persona}} {{apellido_persona}}</p>
     <p>Esta pagina se creo el d&iacute;a: {{date.day}} / {{date.month}} / {{date.year}}</p>
     <p><strong>Temas por aprender:</strong></p>
     <p>
         <ul>
-        {% if themes %}
-            {% for j in themes%}
-                <li>{{j}}</li>
-            {% endfor %}
-        {% else %}
-        <p><strong>No hay elementos que mostrar</strong></p>
-        {% endif %}
+            {% if themes %}
+                {% for j in themes%}
+                    <li>{{j|first|lower}}</li>
+                {% endfor %}
+            {% else %}
+                <p><strong>No hay elementos que mostrar</strong></p>
+            {% endif %}
         </ul>
     </p>
+    </body>
 </html>

@@ -54,7 +54,7 @@ ROOT_URLCONF = 'Proyecto_FPI.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

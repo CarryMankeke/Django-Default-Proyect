@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 import datetime
-from django.template import Template, Context
+from django.template import Context
+from django.template.loader import get_template
 
 
 class Persona(object):
@@ -15,20 +16,14 @@ def welcome(request):
     p1 = Persona('Camilo', 'Soto')
     themes = ['Templates', 'Models', 'Forms', 'Views', 'App Deploy']
     actual_date = datetime.datetime.now()
-    external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/welcome.html')
-    plt = Template(external_doc.read())
-    external_doc.close()
-    context = Context({'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date, 'themes':themes})
-    doc  = plt.render(context)
+    external_doc = get_template('welcome.html')
+    doc = external_doc.render({'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date, 'themes':themes})
     return HttpResponse(doc)
 
 
 def goodbye(request):
-    external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/goodbye.html')
-    plt = Template(external_doc.read())
-    external_doc.close()
-    context = Context()
-    doc  = plt.render(context)
+    external_doc = get_template('goodbye.html')
+    doc  = external_doc.render({})
     return HttpResponse(doc)
 
 
