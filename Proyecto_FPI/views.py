@@ -12,6 +12,16 @@ class Persona(object):
         self.last_name = last_name
 
 
+def home(request):
+    actual_date = datetime.datetime.now()
+    return render(request, 'home.html',{'actual_date':actual_date})
+
+
+def back_home(request):
+    actual_date = datetime.datetime.now()
+    return render(request, 'home.html',{'actual_date':actual_date})
+
+
 def welcome(request):
     p1 = Persona('Camilo', 'Soto')
     themes = ['Templates', 'Models', 'Forms', 'Views', 'App Deploy']

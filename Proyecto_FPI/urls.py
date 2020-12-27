@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Proyecto_FPI.views import welcome, goodbye, date, YrsOldCalculate
+from Proyecto_FPI.views import welcome, goodbye, date, YrsOldCalculate, home, back_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,6 @@ urlpatterns = [
     path('goodbye/', goodbye),
     path('date/', date),
     path('years/<int:edad>/<int:agno>', YrsOldCalculate),
+    path('home/', home),
+    path('back-home/', back_home),
 ]
