@@ -13,11 +13,12 @@ class Persona(object):
 
 def welcome(request):
     p1 = Persona('Camilo', 'Soto')
+    themes = ['Templates', 'Models', 'Forms', 'Views', 'App Deploy']
     actual_date = datetime.datetime.now()
     external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/welcome.html')
     plt = Template(external_doc.read())
     external_doc.close()
-    context = Context({'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date})
+    context = Context({'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date, 'themes':themes})
     doc  = plt.render(context)
     return HttpResponse(doc)
 
