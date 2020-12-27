@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Proyecto_FPI.views import welcome, goodbye, date, YrsOldCalculate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('welcome/', welcome),
+    path('goodbye/', goodbye),
+    path('date/', date),
+    path('years/<int:edad>/<int:agno>', YrsOldCalculate),
 ]
