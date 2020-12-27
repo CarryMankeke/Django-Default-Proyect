@@ -1,25 +1,23 @@
 from django.http import HttpResponse
 from datetime import datetime
+from django.template import Template, Context
 def welcome(request):
-    documento = '''<html>
-    <body>
-    <h1>
-    Bievenido a mi primera pagina con Django
-    </h1>
-    </body>
-    </html>'''
-    return HttpResponse(documento)
+    external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/welcome.html')
+    plt = Template(external_doc.read())
+    external_doc.close()
+    context = Context()
+    doc  = plt.render(context)
+    return HttpResponse(doc)
 
 
 def goodbye(request):
-    documento = '''<html>
-    <body>
-    <h1>
-    Nos vemos espero verte pronto
-    </h1>
-    </body>
-    </html>'''
-    return HttpResponse(documento)
+
+    external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/goodbye.html')
+    plt = Template(external_doc.read())
+    external_doc.close()
+    context = Context()
+    doc  = plt.render(context)
+    return HttpResponse(doc)
 
 
 def date(request):
