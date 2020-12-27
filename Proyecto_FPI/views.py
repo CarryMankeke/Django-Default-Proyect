@@ -2,7 +2,7 @@ from django.http import HttpResponse
 import datetime
 from django.template import Context
 from django.template.loader import get_template
-
+from django.shortcuts import render
 
 class Persona(object):
 
@@ -16,15 +16,12 @@ def welcome(request):
     p1 = Persona('Camilo', 'Soto')
     themes = ['Templates', 'Models', 'Forms', 'Views', 'App Deploy']
     actual_date = datetime.datetime.now()
-    external_doc = get_template('welcome.html')
-    doc = external_doc.render({'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date, 'themes':themes})
-    return HttpResponse(doc)
+    return render(request, 'welcome.html', {'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date, 'themes':themes})
 
 
 def goodbye(request):
-    external_doc = get_template('goodbye.html')
-    doc  = external_doc.render({})
-    return HttpResponse(doc)
+
+    return render(request, 'goodbye.html', {})
 
 
 def date(request):

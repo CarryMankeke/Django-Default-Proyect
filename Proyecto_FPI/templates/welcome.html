@@ -1,5 +1,9 @@
 <html>
+
+
     <body>
+
+            {% include 'tools/barindex.html'%}
         <h1 style = 'color: green'>
         Estamos viendo mi primera plantilla
         </h1>
@@ -26,12 +30,16 @@
         <ul>
             {% if themes %}
                 {% for j in themes%}
-                    <li>{{j|first|lower}}</li>
+                    <li>{{j}}</li>
                 {% endfor %}
             {% else %}
                 <p><strong>No hay elementos que mostrar</strong></p>
             {% endif %}
         </ul>
     </p>
+
+
     </body>
+
+
 </html>
