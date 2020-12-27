@@ -1,17 +1,28 @@
 from django.http import HttpResponse
-from datetime import datetime
+import datetime
 from django.template import Template, Context
+
+
+class Persona(object):
+
+    def __init__(self, name, last_name):
+
+        self.name = name
+        self.last_name = last_name
+
+
 def welcome(request):
+    p1 = Persona('Camilo', 'Soto')
+    actual_date = datetime.datetime.now()
     external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/welcome.html')
     plt = Template(external_doc.read())
     external_doc.close()
-    context = Context()
+    context = Context({'nombre_persona':p1.name, 'apellido_persona':p1.last_name, 'date':actual_date})
     doc  = plt.render(context)
     return HttpResponse(doc)
 
 
 def goodbye(request):
-
     external_doc = open('C:/Users/camil/Documents/GitHub/Django-Default-Proyect/Proyecto_FPI/templates/goodbye.html')
     plt = Template(external_doc.read())
     external_doc.close()
